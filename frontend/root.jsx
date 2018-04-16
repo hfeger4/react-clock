@@ -5,18 +5,28 @@ class Root extends React.Component {
   constructor(props){
     super(props);
     let date = new Date();
-    this.hours = date.getHours();
-    this.minutes = date.getMinutes();
-    this.seconds = date.getSeconds();
+    this.state = {
+      amPm: 'am',
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
+      seconds: date.getSeconds()
+    };
   }
+  incrementTime(date){
+    setInterval(()=>{
 
+    }, 1000);
+  }
+  componentDidMount(){
+    this.incrementTime();
+  }
   render() {
     return(
       <div className="clock">
-        <div>Clock:  </div>
-        <div>{this.hours}:</div>
-        <div>{this.minutes}:</div>
-        <div>{this.seconds}</div>
+        <div>{this.state.hours}:</div>
+        <div>{this.state.minutes}:</div>
+        <div>{this.state.seconds}</div>
+        <div>{this.state.amPm}</div>
       </div>
     );
   }
